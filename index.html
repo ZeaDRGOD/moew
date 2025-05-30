@@ -7,104 +7,253 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: linear-gradient(to bottom, #fce7f3, #f9a8d4);
+      background: linear-gradient(to bottom, #fff1f2, #f9a8d4);
       font-family: 'Khmer', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fce7f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
+    }
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .flower {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, #f472b6 20%, #ec4899 60%);
+      border-radius: 50%;
+      position: relative;
+      animation: bloom 2s infinite alternate;
+    }
+    .flower::before,
+    .flower::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #f9a8d4;
+      border-radius: 50%;
+    }
+    .flower::before {
+      top: -15px;
+      left: 5px;
+    }
+    .flower::after {
+      top: 5px;
+      left: -15px;
+    }
+    .heart-loader {
+      width: 20px;
+      height: 20px;
+      background: #ec4899;
+      transform: rotate(-45deg);
+      position: relative;
+      animation: pulse 1.5s infinite;
+      margin: 0 20px;
+    }
+    .heart-loader::before,
+    .heart-loader::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #ec4899;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart-loader::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart-loader::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes bloom {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.2) rotate(10deg); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.3) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
     }
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ec4899;
+      width: 15px;
+      height: 15px;
+      background: #f472b6;
       transform: rotate(-45deg);
-      animation: float 6s infinite;
+      animation: float 5s infinite;
+      z-index: 0;
     }
     .heart::before,
     .heart::after {
       content: '';
-      width: 20px;
-      height: 20px;
-      background-color: #ec4899;
+      width: 15px;
+      height: 15px;
+      background: #f472b6;
       border-radius: 50%;
       position: absolute;
     }
     .heart::before {
-      top: -10px;
+      top: -7.5px;
       left: 0;
     }
     .heart::after {
-      left: 10px;
+      left: 7.5px;
       top: 0;
     }
+    .flower-deco {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: radial-gradient(circle, #f9a8d4 30%, #ec4899 70%);
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 7s infinite;
+    }
     @keyframes float {
-      0% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
-      50% { transform: translateY(-20px) rotate(-45deg); opacity: 0.4; }
-      100% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      50% { transform: translateY(-15px) rotate(5deg); opacity: 0.3; }
+      100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease-out;
+    }
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     @media (max-width: 640px) {
       .container { padding: 1rem; }
       h1 { font-size: 1.5rem; }
       p { font-size: 1rem; }
+      .flower, .heart-loader { width: 30px; height: 30px; }
+      .flower::before, .flower::after { width: 20px; height: 20px; }
+      .heart { width: 12px; height: 12px; }
+      .heart::before, .heart::after { width: 12px; height: 12px; }
+      .flower-deco { width: 20px; height: 20px; }
     }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center text-gray-800">
-  <div class="container mx-auto max-w-2xl bg-white bg-opacity-90 rounded-lg shadow-lg p-8 m-4">
+  <div class="loader" id="loader">
+    <div class="flower"></div>
+    <div class="heart-loader"></div>
+    <div class="flower"></div>
+  </div>
+  <div class="container mx-auto max-w-2xl bg-white bg-opacity-95 rounded-lg shadow-lg p-8 m-4">
     <h1 class="text-3xl font-bold text-pink-600 text-center mb-6">ស្នេហ៍ដំបូង</h1>
     <div class="relative">
       <div class="heart absolute top-0 left-10"></div>
-      <div class="heart absolute top-20 right-10"></div>
+      <div class="flower-deco absolute top-20 right-10"></div>
       <div class="heart absolute bottom-10 left-20"></div>
-      <p class="text-lg leading-relaxed mb-4">
-        នៅក្នុងទីក្រុងតូចមួយ ដែលមានផ្លូវស្ងប់ស្ងាត់ និងហាងកាហ្វេតូចៗ មានបុរសម្នាក់ឈ្មោះ អាឡិច។ គេជាមនុស្សរួសរាយ ចូលចិត្តញញឹម ប៉ុន្តែបេះដូងគេតែងស្វែងរកស្នេហ៍ពិត។ ថ្ងៃមួយ នៅឯហាងកាហ្វេដែលគេចូលចិត្តអង្គុយ គេបានជួបនារីម្នាក់ឈ្មោះ លូស៊ី។ នាងមានស្នាមញញឹមដ៏កក់ក្តៅ និងភ្នែកភ្លឺចែងចាំងដូចផ្កាយ�। ពេលនាងញញឹម អាឡិចមានអារម្មណ៍ថាពិភពលោកឈប់បង្វិល។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការជួបដំបូង</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        អាឡិចហ៊ានចាប់ផ្តើមសន្ទនា។ «សួស្តី ខ្ញុំឈ្មោះអាឡិច។ អ្នកចូលចិត្តធ្វើអ្វីខ្លះ?» គេសួរដោយញញឹមខ្មាស់ៗ។ លូស៊ីសើច ហើយឆ្លើយថា៖ «ខ្ញុំចូលចិត្តលេងហ្គេម! ជាពិសេសហ្គេមបាញ់បោះ និងហ្គេមប្រណាំងឡាន។» អាឡិចភ្ញាក់ផ្អើល ព្រោះគេក៏ចូលចិត្តលេងហ្គេមដែរ។ គេនិយាយថា៖ «ពិតមែន? យើងលេងជាមួយគ្នាថ្ងៃណាមួយទៅ!» លូស៊ីញញឹម ហើយយល់ព្រម។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">លេងហ្គេមជាមួយគ្នា</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        ចប់ថ្ងៃនោះ អាឡិចនិងលូស៊ីចាប់ផ្តើមជួបគ្នានៅហាងហ្គេមក្នុងទីក្រុង។ ពួកគេលេងហ្គេមប្រណាំងឡាន ហើយអាឡិចតែងតែអនុញ្ញាតឱ្យលូស៊ីឈ្នះ ដើម្បីឃើញនាងសើច។ «អ្នកអស្ចារ្យណាស់ លូស៊ី!» គេនិយាយ ដោយព្យាយាមធ្វើឱ្យនាងសប្បាយចិត្ត។ មានពេលមួយ ពេលលេងហ្គេមជាក្រុម លូស៊ីបានជួយអាឡិចនៅពេលគេស្ទើរចាញ់។ នាងសម្លឹងមកគេ ហើយនិយាយថា៖ «អាឡិច យើងជាក្រុមល្អមែនទេ?» ភ្នែកនាងភ្លឺ ធ្វើឱ្យបេះដូងអាឡិចលោតញាប់។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការចែចង់</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        អាឡិចចាប់ផ្តើមចែចង់លូស៊ីបន្តិចម្តងៗ។ ពេលលេងហ្គេម គេនិយាយលេងថា៖ «បើអូនឈ្នះហ្គេមនេះ បងនឹងទិញតែក្តៅឱ្យអូន!» លូស៊ីសើច ហើយឆ្លើយថា៖ «ចុះបើខ្ញុំចាញ់?» អាឡិចញញឹម ហើយនិយាយថា៖ «អូនមិនដែលចាញ់នៅក្នុងភ្នែកបងទេ។» ពាក្យនេះធ្វើឱ្យលូស៊ីខ្មាស់ ហើយនាងចាប់ផ្តើមសម្លឹងអាឡិចយូរជាងមុន ដោយភ្នែកពោរពេញដោយអារម្មណ៍។
-        <br><br>
-        មួយថ្ងៃ អាឡិចសម្រេចចិត្តធ្វើអ្វីពិសេស។ គេទិញកាដូតូចមួយ—ខ្សែកជាមួយព្យួររាងផ្កាយតូច—ហើយឱ្យលូស៊ីនៅឯហាងហ្គេម។ «នេះសម្រាប់អូន ព្រោះអូនជាផ្កាយរបស់បង» គេនិយាយ។ លូស៊ីញញឹម ហើយភ្នែកនាងភ្លឺឡើង។ «អាឡិច អ្នកពិតជាគួរឱ្យស្រឡាញ់មែន» នាងនិយាយ ហើយពាក់ខ្សែកនោះភ្លាម។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ចាប់ផ្តើម</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        ថ្ងៃមួយ បន្ទាប់ពីលេងហ្គេមជាមួយគ្នា លូស៊ីសម្លឹងអាឡិច ហើយនិយាយថា៖ «អាឡិច ចង់ទៅដើរលេងជាមួយខ្ញុំទេ? ដូចជា… ដេតមួយ?» អាឡិចភ្ញាក់ផ្អើល បេះដូងគេលោតញាប់។ «ពិតជាចង់ណាស់!» គេឆ្លើយ ដោយមិនគិតច្រើន។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ដេតដំបូង</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        លូស៊ីជ្រើសរើសទៅសួនសត្វតូចមួយនៅក្បែរទីក្រុង។ ពួកគេដើរកាត់សួន សើចលេងជាមួយសត្វទន្សាយ និងចែករំលែកការ៉េម។ លូស៊ីថែរក្សាអាឡិចដូចបុរសពិសេសម្នាក់�। នាងជូតការ៉េមជាប់មាត់គេ ហើយនិយាយថា៖ «អ្នកធ្វើឱ្យខ្ញុំសប្បាយចិត្តណាស់ អាឡិច។» ពេលនោះ នាងសម្លឹងចូលភ្នែកគេ ហើយអាឡិចមានអារម្មណ៍ថានាងជាសុបិនដ៏ស្រស់ស្អាត។
-        <br><br>
-        នៅពេលព្រះអាទិត្យលិច ពួកគេអង្គុយនៅក្រោមដើមឈើធំមួយ�। លូស៊ីបែរមក ហើយថើបអាឡិចថ្នមៗលើមាត់�। វាជាការថើបដំបូងរបស់ពួកគេ�। អាឡិចមានអារម្មណ៍ថាបេះដូងគេហោះឡើងទៅលើមេឃ�। «លូស៊ី អូនជាអ្វីៗទាំងអស់សម្រាប់បង» គេខ្សឹប�। លូស៊ីញញឹម ហើយនិយាយថា៖ «អ្នកក៏ជាសុបិនរបស់ខ្ញុំដែរ អាឡិច។»
-      </p>
-      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ជារៀងរហូត</h2>
-      <p class="text-lg leading-relaxed mb-4">
-        ចាប់ពីថ្ងៃនោះ អាឡិចនិងលូស៊ីក្លាយជាគូស្នេហ៍។ ពួកគេនៅតែលេងហ្គេមជាមួយគ្នា ចែចង់គ្នា និងថែរក្សាគ្នាទៅវិញទៅមក�। រាល់ពេលលូស៊ីញញឹម ឬសម្លឹងចូលភ្នែកអាឡិច គេតែងតែនឹកថានាងជានារីក្នុងសុបិនរបស់គេ—នារីដែលធ្វើឱ្យជីវិតគេពោរពេញដោយស្នេហ៍។
-      </p>
-      <h2 class="text-xl font-semibold text-pink-600 mt-8 mb-4 text-center">សារពីអាឡិចទៅលូស៊ី</h2>
-      <p class="text-lg leading-relaxed italic text-pink-700 text-center">
-        លូស៊ី បងសរសេររឿងនេះសម្រាប់អូន ព្រោះអូនជាស្នេហ៍ដំបូង និងស្នេហ៍ពិតរបស់បង។ រាល់ពេលអូនញញឹម ឬសម្លឹងបង បងមានអារម្មណ៍ថាអូនជានារីក្នុងសុបិនរបស់បង�। បងស្រឡាញ់អូនខ្លាំងណាស់! សង្ឃឹមថាអូនចូលចិត្តរឿងនេះ ហើយយើងនឹងបង្កើតរឿងស្នេហ៍របស់យើងបន្តទៀត!
-      </p>
+      <div class="flower-deco absolute bottom-20 right-20"></div>
+      <section class="section">
+        <p class="text-lg leading-relaxed mb-4">
+          នៅក្នុងទីក្រុងតូចមួយ ដែលមានផ្លូវស្ងប់ស្ងាត់ និងហាងកាហ្វេតូចៗ បងជាមនុស្សរួសរាយ ចូលចិត្តញញឹម ប៉ុន្តែបេះដូងបងតែងស្វែងរកស្នេហ៍ពិត។ ថ្ងៃមួយ នៅឯហាងកាហ្វេ បងបានជួបអូន។ អូនមានស្នាមញញឹមដ៏កក់ក្តៅ ដូចផ្កាឈូកនៅលើទឹក និងភ្នែកភ្លឺដូចផ្កាយ។ ពេលអូនញញឹម បងគិតថា៖ «អូនឯណា ធ្វើឱ្យបេះដូងបងរលាយហើយ!»
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការជួបដំបូង</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          បងហ៊ានចាប់ផ្តើមនិយាយ។ «សួស្តី អូនចូលចិត្តធ្វើអ្វីខ្លះ?» បងសួរដោយញញឹមខ្មាស់ៗ។ អូនសើច ហើយឆ្លើយថា៖ «អូនចូលចិត្តលេងហ្គេម! ជាពិសេសហ្គេមបាញ់បោះ និងប្រណាំងឡាន។» បងភ្ញាក់ផ្អើល ព្រោះបងក៏ចូលចិត្តហ្គេមដែរ�। «អូន បងគិតថាអូនជាគូប្រកួតខ្លាំងហើយ! លេងជាមួយបងទៅ!» បងនិយាយលេង ធ្វើឱ្យអូនសើចខ្លាំង�। អូនថា៖ «បង ប្រយ័ត្នអូនឈ្នះបងហើយអួតគ្រប់គ្នា!» បងញញឹម ហើយគិតថាអូននេះគួរឱ្យស្រឡាញ់ណាស់។
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">លេងហ្គេមជាមួយគ្នា</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          បន្ទាប់ពីថ្ងៃនោះ បងនិងអូនចាប់ផ្តើមជួបគ្នានៅហាងហ្គេម។ យើងលេងហ្គេមប្រណាំងឡាន ហើយបងតែងអនុញ្ញាតឱ្យអូនឈ្នះ ដើម្បីឃើញស្នាមញញឹមរបស់អូន�। «អូន អូនអស្ចារ្យណាស់! បងគ្មានឱកាសឈ្នះអូនសោះ!» បងនិយាយលេង ធ្វើឱ្យអូនសើចរហូតផ្អៀង�। មានពេលមួយ ពេលលេងហ្គេមជាក្រុម អូនជួយបងនៅពេលបងស្ទើរចាញ់�। អូនសម្លឹងបង ហើយនិយាយថា៖ «បង អូនមិនទុកឱ្យបងចាញ់ទេ! យើងជាក្រុមកំពូល!» ភ្នែកអូនភ្លឺចែងចាំង ធ្វើឱ្យបេះដូងបងលោតញាប់�。 បងឆ្លើយ៖ «អូន បងគិតថាអូនជាហេរ៉ូរបស់បងហើយ!» អូនសើច ហើយថា៖ «បង កុំផ្អែមពេក អូនខ្មាស់!»
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការចែចង់</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          បងចាប់ផ្តើមចែចង់អូនបន្តិចម្តងៗ។ ពេលលេងហ្គេម បងនិយាយ៖ «អូន បើអូនឈ្នះហ្គេមនេះ បងនឹងទិញការ៉េមឱ្យអូនញ៉ាំ!» អូនសើច ហើយឆ្លើយ៖ «បង បើអូនចាញ់ បងធ្វើយ៉ាងម៉េច?» បងញញឹម ហើយនិយាយ៖ «អូនចាញ់ឬឈ្នះ អូននៅតែជាផ្កាយដ៏ស្រស់ស្អាតនៅក្នុងភ្នែកបង!» អូនខ្មាស់ មុខក្រហម ហើយសម្លឹងបងយូរជាងមុន។ បងគិត៖ «អូនអើយ អូនធ្វើឱ្យបងចង់សរសេរកំណាព្យឱ្យអូនហើយ!» អូនសើច ហើយថា៖ «បង កំណាព្យបងប្រហែលជាគួរឱ្យអៀនណាស់!» បងឆ្លើយ៖ «អៀនឬមិនអៀន អូនគឺជាកំណាព្យរបស់បង!»
+          <br><br>
+          ថ្ងៃមួយ បងសម្រេចធ្វើអ្វីពិសេស។ បងទិញកាដូ—ខ្សែកជាមួយព្យួររាងផ្កាយតូច—ហើយឱ្យអូននៅហាងហ្គេម�। «អូន នេះសម្រាប់អូន ព្រោះអូនជាផ្កាយដែលភ្លឺបំផុតរបស់បង» បងនិយាយ។ អូនញញឹម ភ្នែកភ្លឺឡើង ហើយនិយាយ៖ «បង អូនស្រឡាញ់កាដូនេះណាស់! ប៉ុន្តែបងផ្អែមពេក ប្រយ័ត្នអូនញ៉ាំបង!» បងសើច ហើយឆ្លើយ៖ «អូនញ៉ាំបងទៅ បងសប្បាយចិត្ត!» អូនពាក់ខ្សែកនោះ ហើយសម្លឹងបងដោយភ្នែកពោរពេញដោយស្នេហ៍។
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ចាប់ផ្តើម</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          ថ្ងៃមួយ បន្ទាប់ពីលេងហ្គេម អូនសម្លឹងបង ហើយនិយាយថា៖ «បង ចង់ទៅដើរលទេ? ដូចជា… ដេតមួយ?» បងភ្ញាក់ផ្អើល បេះដូងលោតញាប់។ «អូន បងចង់ខ្លាំងណាស់! អូនជាអ្នកនាំមុខ បងសប្បាយចិត្ត!» បងនិយាយ ធ្វើឱ្យអូនសើច។ អូនថា៖ «បង អូនរៀបចំអ្វីៗហើយ បងគ្រាន់តែញញឹមគួរឱ្យស្រឡាញ់ទៅ!»
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ដេតដំបូង</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          អូនជ្រើសរើសទៅសួនសត្វតូចមួយ។ យើងដើរកាត់សួន សើចលេងជាមួយសត្វទន្សាយ និងចែករំលែកការ៉េម។ អូនថែរក្សាបងដូចបុរសពិសេស។ ពេលការ៉េមជាប់មាត់បង អូនជូតឱ្យ ហើយនិយាយ៖ «បង អ្នកធ្វើឱ្យអូនសើចរាល់ថ្ងៃ ប៉ុន្តែមាត់អ្នកកខ្វក់ហើយ!» បងសើច ហើយឆ្លើយ៖ «អូន បើបងកខ្វក់ អូនជួយសម្អាតបងរាល់ថ្ងៃទៅ!» អូនញញឹម ហើយសម្លឹងចូលភ្នែកបង។ ពេលនោះ បងមានអារម្មណ៍ថាអូនជានារីក្នុងសុបិនរបស់បង។
+          <br><br>
+          នៅពេលព្រះអាទិត្យលិច យើងអង្គុយក្រោមដើមឈើធំ។ អូនបែរមក ហើយថើបបងថ្នមៗលើមាត់។ វាជាការថើបដំបូង។ បេះដូងបងហោះឡើងទៅលើមេឃ។ «អូន អូនជាអ្វីៗទាំងអស់របស់បង» បងខ្សឹប។ អូនញញឹម ហើយនិយាយ៖ «បង អូនសប្បាយចិត្តបំផុតនៅជាមួយបង។ ប៉ុន្តែបងកុំថើបអូនមុន អូនចង់ជាអ្នកចាប់ផ្តើម!» បងសើច ហើយថា៖ «អូន អូនឈ្នះគ្រប់ហ្គេម សូម្បីតែហ្គេមស្នេហ៍!»
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ជារៀងរហូត</h2>
+        <p class="text-lg leading-relaxed mb-4">
+          ចាប់ពីថ្ងៃនោះ បងនិងអូនក្លាយជាគូស្នេហ៍។ យើងនៅតែលេងហ្គេមជាមួយគ្នា ចែចង់គ្នា និងថែរក្សាគ្នា។ រាល់ពេលអូនញញឹម ឬសម្លឹងចូលភ្នែកបង បងមានអារម្មណ៍ថាអូនជានារីក្នុងសុបិន។ «អូន អូនដូចផ្កាយដែលបងចង់មើលជានិច្ច» បងនិយាយ�। អូនសើច ហើយថា៖ «បង បើអូនជាផ្កាយ បងគឺជាមេឃដែលឱបអូន!» បងញញឹម ហើយគិតថាអូនជាស្នេហ៍ដ៏ល្អឥតខ្ចោះ។
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="text-xl font-semibold text-pink-600 mt-8 mb-4 text-center">សារពីបងទៅអូន</h2>
+        <p class="text-lg leading-relaxed italic text-pink-700 text-center">
+          O b mean pek yy klas b jg yy pi arom b tah b sl o nas pel klas o khg o orn jit o sdey oy b o due b yag na kor b nv ta sl o hz b hope hz tah puk yg ach dan dai knea sl knea rhot o okay ng tver jea mnus srey jong kroy bos b rhot ban ot?
+        </p>
+      </section>
     </div>
     <footer class="text-center mt-8 text-gray-600">
-      <p>បង្កើតជាមួយស្នេហ៍សម្រាប់ លូស៊ី</p>
+      <p>បង្កើតជាមួយស្នេហ៍សម្រាប់ អូន</p>
     </footer>
   </div>
   <script>
-    // Add more floating hearts dynamically
+    // Hide loader after 2 seconds
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 2000);
+    });
+
+    // Add floating hearts and flowers dynamically
     const container = document.querySelector('.container');
-    for (let i = 0; i < 5; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.top = `${Math.random() * 80}%`;
-      heart.style.left = `${Math.random() * 90}%`;
-      heart.style.animationDelay = `${Math.random() * 3}s`;
-      container.appendChild(heart);
+    for (let i = 0; i < 8; i++) {
+      const deco = document.createElement('div');
+      deco.className = i % 2 === 0 ? 'heart' : 'flower-deco';
+      deco.style.top = `${Math.random() * 80}%`;
+      deco.style.left = `${Math.random() * 90}%`;
+      deco.style.animationDelay = `${Math.random() * 4}s`;
+      container.appendChild(deco);
     }
+
+    // Smooth scroll reveal effect
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
