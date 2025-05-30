@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ស្នេហ៍ដំបូង</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #fce7f3, #f9a8d4);
+      font-family: 'Khmer', sans-serif;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ec4899;
+      transform: rotate(-45deg);
+      animation: float 6s infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: #ec4899;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+      50% { transform: translateY(-20px) rotate(-45deg); opacity: 0.4; }
+      100% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 1rem; }
+      h1 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-gray-800">
+  <div class="container mx-auto max-w-2xl bg-white bg-opacity-90 rounded-lg shadow-lg p-8 m-4">
+    <h1 class="text-3xl font-bold text-pink-600 text-center mb-6">ស្នេហ៍ដំបូង</h1>
+    <div class="relative">
+      <div class="heart absolute top-0 left-10"></div>
+      <div class="heart absolute top-20 right-10"></div>
+      <div class="heart absolute bottom-10 left-20"></div>
+      <p class="text-lg leading-relaxed mb-4">
+        នៅក្នុងទីក្រុងតូចមួយ ដែលមានផ្លូវស្ងប់ស្ងាត់ និងហាងកាហ្វេតូចៗ មានបុរសម្នាក់ឈ្មោះ អាឡិច។ គេជាមនុស្សរួសរាយ ចូលចិត្តញញឹម ប៉ុន្តែបេះដូងគេតែងស្វែងរកស្នេហ៍ពិត។ ថ្ងៃមួយ នៅឯហាងកាហ្វេដែលគេចូលចិត្តអង្គុយ គេបានជួបនារីម្នាក់ឈ្មោះ លូស៊ី។ នាងមានស្នាមញញឹមដ៏កក់ក្តៅ និងភ្នែកភ្លឺចែងចាំងដូចផ្កាយ�। ពេលនាងញញឹម អាឡិចមានអារម្មណ៍ថាពិភពលោកឈប់បង្វិល។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការជួបដំបូង</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        អាឡិចហ៊ានចាប់ផ្តើមសន្ទនា។ «សួស្តី ខ្ញុំឈ្មោះអាឡិច។ អ្នកចូលចិត្តធ្វើអ្វីខ្លះ?» គេសួរដោយញញឹមខ្មាស់ៗ។ លូស៊ីសើច ហើយឆ្លើយថា៖ «ខ្ញុំចូលចិត្តលេងហ្គេម! ជាពិសេសហ្គេមបាញ់បោះ និងហ្គេមប្រណាំងឡាន។» អាឡិចភ្ញាក់ផ្អើល ព្រោះគេក៏ចូលចិត្តលេងហ្គេមដែរ។ គេនិយាយថា៖ «ពិតមែន? យើងលេងជាមួយគ្នាថ្ងៃណាមួយទៅ!» លូស៊ីញញឹម ហើយយល់ព្រម។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">លេងហ្គេមជាមួយគ្នា</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        ចប់ថ្ងៃនោះ អាឡិចនិងលូស៊ីចាប់ផ្តើមជួបគ្នានៅហាងហ្គេមក្នុងទីក្រុង។ ពួកគេលេងហ្គេមប្រណាំងឡាន ហើយអាឡិចតែងតែអនុញ្ញាតឱ្យលូស៊ីឈ្នះ ដើម្បីឃើញនាងសើច។ «អ្នកអស្ចារ្យណាស់ លូស៊ី!» គេនិយាយ ដោយព្យាយាមធ្វើឱ្យនាងសប្បាយចិត្ត។ មានពេលមួយ ពេលលេងហ្គេមជាក្រុម លូស៊ីបានជួយអាឡិចនៅពេលគេស្ទើរចាញ់។ នាងសម្លឹងមកគេ ហើយនិយាយថា៖ «អាឡិច យើងជាក្រុមល្អមែនទេ?» ភ្នែកនាងភ្លឺ ធ្វើឱ្យបេះដូងអាឡិចលោតញាប់។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ការចែចង់</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        អាឡិចចាប់ផ្តើមចែចង់លូស៊ីបន្តិចម្តងៗ។ ពេលលេងហ្គេម គេនិយាយលេងថា៖ «បើអូនឈ្នះហ្គេមនេះ បងនឹងទិញតែក្តៅឱ្យអូន!» លូស៊ីសើច ហើយឆ្លើយថា៖ «ចុះបើខ្ញុំចាញ់?» អាឡិចញញឹម ហើយនិយាយថា៖ «អូនមិនដែលចាញ់នៅក្នុងភ្នែកបងទេ។» ពាក្យនេះធ្វើឱ្យលូស៊ីខ្មាស់ ហើយនាងចាប់ផ្តើមសម្លឹងអាឡិចយូរជាងមុន ដោយភ្នែកពោរពេញដោយអារម្មណ៍។
+        <br><br>
+        មួយថ្ងៃ អាឡិចសម្រេចចិត្តធ្វើអ្វីពិសេស។ គេទិញកាដូតូចមួយ—ខ្សែកជាមួយព្យួររាងផ្កាយតូច—ហើយឱ្យលូស៊ីនៅឯហាងហ្គេម។ «នេះសម្រាប់អូន ព្រោះអូនជាផ្កាយរបស់បង» គេនិយាយ។ លូស៊ីញញឹម ហើយភ្នែកនាងភ្លឺឡើង។ «អាឡិច អ្នកពិតជាគួរឱ្យស្រឡាញ់មែន» នាងនិយាយ ហើយពាក់ខ្សែកនោះភ្លាម។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ចាប់ផ្តើម</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        ថ្ងៃមួយ បន្ទាប់ពីលេងហ្គេមជាមួយគ្នា លូស៊ីសម្លឹងអាឡិច ហើយនិយាយថា៖ «អាឡិច ចង់ទៅដើរលេងជាមួយខ្ញុំទេ? ដូចជា… ដេតមួយ?» អាឡិចភ្ញាក់ផ្អើល បេះដូងគេលោតញាប់។ «ពិតជាចង់ណាស់!» គេឆ្លើយ ដោយមិនគិតច្រើន។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ដេតដំបូង</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        លូស៊ីជ្រើសរើសទៅសួនសត្វតូចមួយនៅក្បែរទីក្រុង។ ពួកគេដើរកាត់សួន សើចលេងជាមួយសត្វទន្សាយ និងចែករំលែកការ៉េម។ លូស៊ីថែរក្សាអាឡិចដូចបុរសពិសេសម្នាក់�। នាងជូតការ៉េមជាប់មាត់គេ ហើយនិយាយថា៖ «អ្នកធ្វើឱ្យខ្ញុំសប្បាយចិត្តណាស់ អាឡិច។» ពេលនោះ នាងសម្លឹងចូលភ្នែកគេ ហើយអាឡិចមានអារម្មណ៍ថានាងជាសុបិនដ៏ស្រស់ស្អាត។
+        <br><br>
+        នៅពេលព្រះអាទិត្យលិច ពួកគេអង្គុយនៅក្រោមដើមឈើធំមួយ�। លូស៊ីបែរមក ហើយថើបអាឡិចថ្នមៗលើមាត់�। វាជាការថើបដំបូងរបស់ពួកគេ�। អាឡិចមានអារម្មណ៍ថាបេះដូងគេហោះឡើងទៅលើមេឃ�। «លូស៊ី អូនជាអ្វីៗទាំងអស់សម្រាប់បង» គេខ្សឹប�। លូស៊ីញញឹម ហើយនិយាយថា៖ «អ្នកក៏ជាសុបិនរបស់ខ្ញុំដែរ អាឡិច។»
+      </p>
+      <h2 class="text-xl font-semibold text-pink-500 mt-6 mb-2">ស្នេហ៍ជារៀងរហូត</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        ចាប់ពីថ្ងៃនោះ អាឡិចនិងលូស៊ីក្លាយជាគូស្នេហ៍។ ពួកគេនៅតែលេងហ្គេមជាមួយគ្នា ចែចង់គ្នា និងថែរក្សាគ្នាទៅវិញទៅមក�। រាល់ពេលលូស៊ីញញឹម ឬសម្លឹងចូលភ្នែកអាឡិច គេតែងតែនឹកថានាងជានារីក្នុងសុបិនរបស់គេ—នារីដែលធ្វើឱ្យជីវិតគេពោរពេញដោយស្នេហ៍។
+      </p>
+      <h2 class="text-xl font-semibold text-pink-600 mt-8 mb-4 text-center">សារពីអាឡិចទៅលូស៊ី</h2>
+      <p class="text-lg leading-relaxed italic text-pink-700 text-center">
+        លូស៊ី បងសរសេររឿងនេះសម្រាប់អូន ព្រោះអូនជាស្នេហ៍ដំបូង និងស្នេហ៍ពិតរបស់បង។ រាល់ពេលអូនញញឹម ឬសម្លឹងបង បងមានអារម្មណ៍ថាអូនជានារីក្នុងសុបិនរបស់បង�। បងស្រឡាញ់អូនខ្លាំងណាស់! សង្ឃឹមថាអូនចូលចិត្តរឿងនេះ ហើយយើងនឹងបង្កើតរឿងស្នេហ៍របស់យើងបន្តទៀត!
+      </p>
+    </div>
+    <footer class="text-center mt-8 text-gray-600">
+      <p>បង្កើតជាមួយស្នេហ៍សម្រាប់ លូស៊ី</p>
+    </footer>
+  </div>
+  <script>
+    // Add more floating hearts dynamically
+    const container = document.querySelector('.container');
+    for (let i = 0; i < 5; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.top = `${Math.random() * 80}%`;
+      heart.style.left = `${Math.random() * 90}%`;
+      heart.style.animationDelay = `${Math.random() * 3}s`;
+      container.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
