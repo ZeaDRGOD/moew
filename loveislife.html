@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <title>ស្នេហាគឺជាជីវិត - Love is Life</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #fff1f5, #ffd1e3);
+      color: #5a1a3a;
+      line-height: 1.8;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      transition: background 1s ease, color 1s ease;
+    }
+    .scene {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 245, 250, 0.85);
+      border-radius: 20px;
+      margin-top: 30px;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.25);
+      animation: fadeIn 2s ease;
+    }
+    .dialogue {
+      margin-left: 40px;
+      font-family: 'Dancing Script', cursive;
+      font-style: normal;
+      font-weight: 500;
+      color: #a71d5d;
+      transition: color 1s ease;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      color: #d63384;
+      padding-top: 30px;
+      font-size: 48px;
+      text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3);
+      transition: color 1s ease;
+    }
+    .final-message {
+      font-size: 18px;
+      background: #fff0f6;
+      border-left: 5px solid #ff85c0;
+      padding: 20px;
+      margin: 50px auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+      font-family: 'Poppins', sans-serif;
+    }
+    .final-message strong {
+      font-family: 'Dancing Script', cursive;
+      color: #c2185b;
+      font-size: 22px;
+      transition: color 1s ease;
+    }
+    .heart, .flower {
+      position: fixed;
+      top: -50px;
+      z-index: 0;
+      width: 30px;
+      height: 30px;
+      opacity: 0.7;
+      animation: fall 10s linear infinite;
+    }
+    @keyframes fall {
+      0% {transform: translateY(-50px) rotate(0deg); opacity: 0.7;}
+      100% {transform: translateY(100vh) rotate(360deg); opacity: 0;}
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+    .cat-sticker {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 120px;
+      opacity: 0.9;
+      transition: transform 0.3s ease;
+    }
+    .cat-sticker:hover {
+      transform: scale(1.1);
+    }
+    /* Splash Screen Styles */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffccff, #ffe6f0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .splash-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .splash-screen h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #d63384;
+      font-size: 40px;
+      margin: 0;
+      animation: pulse 1.5s infinite;
+    }
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ff85c0;
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash-screen" id="splashScreen">
+    <h2>Love Loading...</h2>
+    <div class="loader"></div>
+  </div>
+
+  <h1>ស្នេហាគឺជាជីវិត 💖</h1>
+  <div class="scene">
+      <p>នៅក្នុងភូមិតូចមួយ មានបុរសវ័យក្មេងម្នាក់ឈ្មោះ ចូ អាយុ២០ឆ្នាំ ជាអ្នកជួសជុលម៉ូតូដ៏សង្ហា។ គេតែងតែញញឹមឲ្យអតិថិជន ជាពិសេសនារីស្រស់ស្អាតឈ្មោះ ចានី អាយុ២១ឆ្នាំ ដែលជាអ្នកលក់ផ្កានៅផ្សារក្បែរនោះ។</p>
+      <p class="dialogue">ចូ: "អូនចានី ផ្កាស្អាតហ្នឹង តើធ្វើពីបេះដូងអូនមែនទេ? ព្រោះវាស្អាតណាស់!"</p>
+      <p class="dialogue">ចានី: *ញញឹមខ្មាស* "បងចូ និយាយផ្អែមណាស់! �ប៉ុន្តែផ្កាទាំងនេះមិនស្អាតដូចភ្នែកបងទេ!"</p>
+      <p>រៀងរាល់ថ្ងៃ ចូ តែងតែជិះម៉ូតូទៅផ្សារដើម្បីទិញផ្កាពីចានី ទោះបីជាគេមិនត្រូវការផ្កាក៏ដោយ។ គេគ្រាន់តែចង់ឃើញញញឹមរបស់នាង។</p>
+  </div>
+  <div class="scene">
+      <p>នៅថ្ងៃមួយ នៅពេលថ្ងៃលិច ចូ បានអញ្ជើញចានីទៅដើរលេងនៅមាត់ទន្លេ�। ពួកគេអង្គុយនៅលើស្មៅ មើលទឹកហូរ និងផ្ទៃមេឃពណ៌ផ្កាឈូក។</p>
+      <p class="dialogue">ចូ: "អូនចានី បើបងជាពពក អូននឹងជាអ្វី?"</p>
+      <p class="dialogue">ចានី: *សើច* "អូននឹងជាខ្យល់ ដើម្បីបក់បងឲ្យនៅជិតអូនជានិច្ច!"</p>
+      <p>ចូ យកដៃទៅកាន់ដៃចានី ហើយអង្អែលថ្នមៗ។ ពួកគេនិយាយគ្នាអំពីសុបិន អំពីអនាគត និងអំពីក្តីស្រលាញ់ដែលកំពុងរីកដុះដាលនៅក្នុងបេះដូង។</p>
+  </div>
+  <div class="scene">
+      <p>ថ្ងៃមួយ ចានី បានឈឺធ្ងន់។ ចូ មិនចាកចេញពីនាងសូម្បីតែមួយភ្លែត�। គេនាំនាងទៅមន្ទីរពេទ្យ និងថែរក្សានាងគ្រប់យ៉ាង។ នៅពេលនាងភ្ញាក់ឡើង នាងឃើញចូកំពុងអានសៀវភៅនៅក្បែរនាង។</p>
+      <p class="dialogue">ចានី: "បងចូ អូនគិតថាបងជាព្រះអាទិត្យ ព្រោះបងធ្វើឲ្យជីវិតអូនភ្លឺស្វាង។"</p>
+      <p class="dialogue">ចូ: *ញញឹម* "អូនជាព្រះច័ន្ទរបស់បង ព្រោះអូនធ្វើឲ្យរាត្រីបងមានន័យ។"</p>
+      <p>នៅពេលនោះ ចូ បានឱបចានីថ្នមៗ ហើយថើបថ្ងាសនាង�। ពួកគេមានអារម្មណ៍ថាពិភពលោកនេះមានតែពួកគេពីរនាក់ប៉ុណ្ណោះ។</p>
+  </div>
+  <div class="scene">
+      <p>បន្ទាប់ពីចានីជាសះស្បើយ ចូ បានសម្រេចចិត្តសុំនាងរៀបការ�। គេបានរៀបចំកន្លែងមួយនៅក្រោមដើមឈើធំមួយ ដែលតុបតែងដោយផ្កាឈូករ័ត្ន និងភ្លើងតូចៗ�。</p>
+      <p class="dialogue">ចូ: "អូនចានី បងមិនសន្យាថានឹងឲ្យផ្កាយលើមេឃទេ ប៉ុន្តែបងសន្យាថានឹងស្រលាញ់ និងថែរក្សាអូនរហូតដល់ចាស់!"</p>
+      <p class="dialogue">ចានី: *ទឹកភ្នែកសប្បាយ* "បងចូ អូននឹងជាប្រពន្ធដ៏ល្អរបស់បង ហើយនឹងស្រលាញ់បងជានិច្ច!"</p>
+      <p>ពួកគេឱបគ្នានៅក្រោមពន្លឺផ្កាយ ហើយអារម្មណ៍ស្នេហ៍របស់ពួកគេហាក់ដូចជាផ្កាដែលរីកស្គុសនៅក្នុងសួនច្បារនៃជីវិត។</p>
+  </div>
+  <div class="scene">
+      <p>នៅថ្ងៃរៀបការ ចូ និងចានី បានរៀបចំពិធីមួយដ៏សាមញ្ញ ប៉ុន្តែពោរពេញដោយស្នេហ៍។ មិត្តភក្តិ និងក្រុមគ្រួសារបានមកអបអរសាទរ។ ចានី ស្លៀកសម្លៀកបំពាក់ខ្មែរបុរាណ ស្អាតដូចនាងសុរស្ត្រី ហើយចូ សង្ហាដូចស្តេចក្នុងសម្លៀកបំពាក់អាវធំ។</p>
+      <p>បន្ទាប់ពីរៀបការ ពួកគេមានកូនពីរនាក់ និងរស់នៅជាមួយគ្នាដោយសុភមង្គលនៅក្នុងផ្ទះតូចមួយនៅជិតផ្សារ�। រៀងរាល់ល្ងាច ពួកគេតែងតែអង្គុយជាមួយគ្នា និយាយលេង និងសើចសប្បាយ ដូចជាថ្ងៃដំបូងដែលពួកគេបានជួបគ្នា�।</p>
+  </div>
+  <div class="scene final-message">
+    <strong>សារពី Reach ទៅ Hani 💌</strong><br>
+    O dg ot tang pi b skol o mk o tver oy b pleak pi 1 tngai tv 1 tngai<br>
+    pi mnus muy dea sngob sngat mk jea mnus dea yy jern serj jern<br>
+    o preab doch jea mnus mneak dea tver oy b mean jivit sros<br>
+    bom brong rkun o dea jol mk knog jivit b<br>
+    pi bong, Reach!
+  </div>
+
+  <!-- Floating hearts and flowers -->
+  <script>
+    const emojis = ['🌸'];
+    for(let i=0; i<30; i++) {
+      const el = document.createElement('div');
+      el.className = Math.random() > 0.5 ? 'heart' : 'flower';
+      el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (Math.random()*10 + 20) + 'px';
+      el.style.animationDuration = (Math.random()*5 + 5) + 's';
+      document.body.appendChild(el);
+    }
+
+    // Splash screen auto-hide after 3 seconds
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById('splashScreen').classList.add('hidden');
+      }, 3000);
+    };
+
+    // Scroll-based color animation
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollFraction = scrollPosition / maxScroll;
+
+      // Define color stops for gradient and text
+      const colors = [
+        { bgStart: '#fff1f5', bgEnd: '#ffd1e3', text: '#5a1a3a', dialogue: '#a71d5d', h1: '#d63384', strong: '#c2185b' },
+        { bgStart: '#ffe6f0', bgEnd: '#ffccff', text: '#4a1530', dialogue: '#b71c6a', h1: '#e64596', strong: '#d12a6d' },
+        { bgStart: '#fff0fa', bgEnd: '#ffe4e1', text: '#3a1026', dialogue: '#c71d7a', h1: '#f656a8', strong: '#e13c7f' }
+      ];
+
+      // Interpolate between color stops based on scroll position
+      const index = Math.min(Math.floor(scrollFraction * (colors.length - 1)), colors.length - 2);
+      const fraction = (scrollFraction * (colors.length - 1)) - index;
+      const lerpColor = (start, end, t) => {
+        const r = Math.round(parseInt(start.slice(1, 3), 16) * (1 - t) + parseInt(end.slice(1, 3), 16) * t);
+        const g = Math.round(parseInt(start.slice(3, 5), 16) * (1 - t) + parseInt(end.slice(3, 5), 16) * t);
+        const b = Math.round(parseInt(start.slice(5, 7), 16) * (1 - t) + parseInt(end.slice(5, 7), 16) * t);
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+      };
+
+      const currentColor = {
+        bgStart: lerpColor(colors[index].bgStart, colors[index + 1].bgStart, fraction),
+        bgEnd: lerpColor(colors[index].bgEnd, colors[index + 1].bgEnd, fraction),
+        text: lerpColor(colors[index].text, colors[index + 1].text, fraction),
+        dialogue: lerpColor(colors[index].dialogue, colors[index + 1].dialogue, fraction),
+        h1: lerpColor(colors[index].h1, colors[index + 1].h1, fraction),
+        strong: lerpColor(colors[index].strong, colors[index + 1].strong, fraction)
+      };
+
+      document.body.style.background = `linear-gradient(to bottom right, ${currentColor.bgStart}, ${currentColor.bgEnd})`;
+      document.body.style.color = currentColor.text;
+      document.querySelectorAll('.dialogue').forEach(el => el.style.color = currentColor.dialogue);
+      document.querySelector('h1').style.color = currentColor.h1;
+      document.querySelector('.final-message strong').style.color = currentColor.strong;
+    });
+  </script>
+
+  <!-- Cute Cat Sticker -->
+  <img src="https://png.pngtree.com/png-clipart/20230405/original/pngtree-cute-cat-sticker-cartoon-kitten-kitty-png-image_9029344.png" class="cat-sticker" alt="Cute Cat">
+</body>
+</html>
